@@ -30,6 +30,7 @@
         {/foreach}
         </td>
         <td>
+            <!--XXX 应该用个大图插件 而不是跳转 -->
             <a href="{$v.ad_code}" target="_blank"> <img src="{$v.ad_code}" style="width: 50px;height: 30px"  ></a>
         </td>
         <td>{$v.ad_link}</td>
@@ -37,14 +38,14 @@
             {eq name='v.is_target' value='1'}
             <i class="fa fa-check text-navy change-status hover-point"  data-value="0" data-cv="1" data-id="{$v.id}" data-column="is_target" data-table="ad" data-msg="否" data-todo="0" data-cur="是" onclick="changeStatus(this)" > 是</i>
             {else/}
-            <i class="fa fa-close text-navy change-status hover-point"  data-value="1" data-cv="0" data-id="{$v.id}" data-column="is_target" data-table="ad" data-msg="是" data-todo="1" data-cur="否" onclick="changeStatus(this)" > 否</i>
+            <i class="fa fa-close text-danger change-status hover-point"  data-value="1" data-cv="0" data-id="{$v.id}" data-column="is_target" data-table="ad" data-msg="是" data-todo="1" data-cur="否" onclick="changeStatus(this)" > 否</i>
             {/eq}
         </td>
         <td>
             {eq name='v.is_show' value='0'}
             <i class="fa fa-check text-navy change-status hover-point"  data-value="1" data-cv="0" data-id="{$v.id}" data-column="is_show" data-table="ad" data-msg="隐藏" data-todo="0" data-cur="显示" onclick="changeStatus(this)" > 显示</i>
             {else/}
-            <i class="fa fa-close text-navy change-status hover-point"  data-value="0" data-cv="1" data-id="{$v.id}" data-column="is_show" data-table="ad" data-msg="显示" data-todo="1" data-cur="隐藏" onclick="changeStatus(this)" > 隐藏</i>
+            <i class="fa fa-close text-danger change-status hover-point"  data-value="0" data-cv="1" data-id="{$v.id}" data-column="is_show" data-table="ad" data-msg="显示" data-todo="1" data-cur="隐藏" onclick="changeStatus(this)" > 隐藏</i>
             {/eq}
         </td>
         <td>

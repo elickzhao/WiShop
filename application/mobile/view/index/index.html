@@ -90,43 +90,55 @@
                 <dt>
                     {zhjaa:adv pid="3" limit="1" item="mm"}
                     <a href="{$mm.ad_link}" {eq name="mm.is_target" value="1"}target="_blank"{/eq}>
-                    <img src="{$mm.ad_code}" title=""width="100%"  style="max-height: 300px"/>
+                    <img src="{$mm.ad_code}" title=""  style="max-height: 300px"/>
                     </a>
                     {/zhjaa:adv}
                 </dt>
-                <dd>
-        <span class="Edge">
-          {zhjaa:adv pid="5" limit="1" item="mm"}
-              <a href="{$mm.ad_link}" {eq name="mm.is_target" value="1"}target="_blank"{/eq}>
-                 <img src="{$mm.ad_code}" title=""width="100%"  style="max-height: 300px"/>
-            </a>
-            {/zhjaa:adv}
-        </span>
-             <span class="Edge">
-		      {zhjaa:adv pid="6" limit="1" item="mm"}
-                  <a href="{$mm.ad_link}" {eq name="mm.is_target" value="1"}target="_blank"{/eq}>
-                     <img src="{$mm.ad_code}" title=""width="100%"  style="max-height: 300px"/>
-                 </a>
-                 {/zhjaa:adv}
-            </span>
-                </dd>
             </dl>
-            <ul>
-                <li class="brom">
-                    {zhjaa:adv pid="7" limit="1" item="mm"}
-                    <a href="{$mm.ad_link}" {eq name="mm.is_target" value="1"}target="_blank"{/eq}>
-                    <img src="{$mm.ad_code}" title=""width="100%"  style="max-height: 300px"/>
-                    </a>
-                    {/zhjaa:adv}
-                </li>
-                <li>
-                    {zhjaa:adv pid="8" limit="1" item="mm"}
-                    <a href="{$mm.ad_link}" {eq name="mm.is_target" value="1"}target="_blank"{/eq}>
-                    <img src="{$mm.ad_code}" title=""width="100%"  style="max-height: 300px"/>
-                    </a>
-                    {/zhjaa:adv}
-                </li>
-            </ul>
+
+
+            <section class="index_floor_lou">
+                    <div class="floor_body">
+                        <h2>
+                            <em></em>品牌特卖
+                        </h2>
+                        <div id="scroll_promotion">
+                                <ul>
+                                        <!-- 这里广告位的限制大小应该加上 现在先这么样吧 -->
+                                        <li class="brom">
+                                            {zhjaa:adv pid="5" limit="1" item="mm"}
+                                            <a href="{$mm.ad_link}" {eq name="mm.is_target" value="1"}target="_blank"{/eq}>
+                                            <img src="{$mm.ad_code}" title=""width="100%"  style="max-height: 300px"/>
+                                            </a>
+                                            {/zhjaa:adv}
+                                        </li>
+                                        <li>
+                                            {zhjaa:adv pid="6" limit="1" item="mm"}
+                                            <a href="{$mm.ad_link}" {eq name="mm.is_target" value="1"}target="_blank"{/eq}>
+                                            <img src="{$mm.ad_code}" title=""width="100%"  style="max-height: 300px"/>
+                                            </a>
+                                            {/zhjaa:adv}
+                                        </li>
+                                        <li class="brom">
+                                            {zhjaa:adv pid="7" limit="1" item="mm"}
+                                            <a href="{$mm.ad_link}" {eq name="mm.is_target" value="1"}target="_blank"{/eq}>
+                                            <img src="{$mm.ad_code}" title=""width="100%"  style="max-height: 300px"/>
+                                            </a>
+                                            {/zhjaa:adv}
+                                        </li>
+                                        <li>
+                                            {zhjaa:adv pid="8" limit="1" item="mm"}
+                                            <a href="{$mm.ad_link}" {eq name="mm.is_target" value="1"}target="_blank"{/eq}>
+                                            <img src="{$mm.ad_code}" title=""width="100%"  style="max-height: 300px"/>
+                                            </a>
+                                            {/zhjaa:adv}
+                                        </li>
+                                    </ul>
+                        </div>
+                    </div>
+                </section>
+
+
         </div>
         <!--限时促销倒计时-->
         <script type="text/javascript">

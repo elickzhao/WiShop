@@ -30,7 +30,7 @@
         </td>
         <td>
             {eq name='v.is_hot' value='0'}
-            <i class="fa fa-close text-navy change-status hover-point"  data-value="1" data-cv="0" data-id="{$v.id}" data-column="is_hot" data-table="goods_brand" data-msg="推荐" data-todo="1" data-cur="不推荐" onclick="changeStatus(this)" > 不推荐</i>
+            <i class="fa fa-close text-danger change-status hover-point"  data-value="1" data-cv="0" data-id="{$v.id}" data-column="is_hot" data-table="goods_brand" data-msg="推荐" data-todo="1" data-cur="不推荐" onclick="changeStatus(this)" > 不推荐</i>
             {else/}
             <i class="fa fa-check text-navy change-status hover-point"  data-value="0" data-cv="1" data-id="{$v.id}" data-column="is_hot" data-table="goods_brand" data-msg="不推荐" data-todo="0" data-cur="推荐" onclick="changeStatus(this)" > 推荐</i>
             {/eq}

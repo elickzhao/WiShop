@@ -88,7 +88,7 @@ class Promotion extends Base{
     {
         $id = input('param.id');
         $where = "goods_prom_id=0 OR ( (goods_prom_id=$id) AND (prom_type=3))";
-        $goods_list = $this->goods->where(['store_count'=>['gt',0]])->where($where)->column('id,goods_name,store_count,shop_price');//所有商品
+        $goods_list = $this->goods->where(['store_count'=>['gt',0]])->where($where)->column('id,goods_name,store_count,shop_price');//所有商品  //XXX这么选择商品有点扯 以后还得改成分类下选择 要不东西太多了
         $level_list =Db::name('user_level')->order(['sort'=>'asc','created_at'=>'desc'])->column('id,name');//所有会员等级
         $where = "type=0  AND (create_num=0 OR (create_num > send_num))" ;
         $coupon = Db::name('coupon')->where($where)->column('id,name');//面额模板类型的--优惠券列表
@@ -118,6 +118,7 @@ class Promotion extends Base{
             $info['goods_ids'] = $ll;
             $info['goods_id'] = implode(',',$ll);
         }
+        
         return view('prom/_goods_prom',[
             'info'=>$info,
             'id'=>$id,

@@ -130,7 +130,7 @@
 <script>
     /*表单提交*/
     $("#saveBtn").click(function(){
-        var expression = $("input[name=expression]").val();
+        var expression = $("input[name=expression]").val()?$("input[name=expression]").val():$("select[name=expression]").val();
         if(isEmpty('',$("input[name=name]").val(),'促销活动名称不能为空') == false){return false;}
         if(isEmpty('',expression,'优惠信息不能为空') == false){return false;}
         if(isEmpty('',$("input[name=goods_ids]").val(),'请选择活动商品') == false){return false;}
@@ -139,7 +139,7 @@
         if(isEmpty('',$("textarea[name=description]").val(),'描述不能为空') == false){return false;}
         var type = $("select[name=type]").val();
         if(type ==0){
-            if(prexRule(/^[4-9][5-9]$/,expression,'折扣率只能是45-99之间的数字') == false){return false;};
+            if(prexRule(/^4[5-9]|[5-9][0-9]$/,expression,'折扣率只能是45-99之间的数字') == false){return false;};
         }
         if(type==1 || type==2){
             if(!parseFloat(expression)){

@@ -17,7 +17,7 @@
         <ul>
           <li><a href="javascript:;" class="tab_head on"   id="goods_ka1" onClick="setGoodsTab('goods_ka',1,3)">商品</a></li>
           <li><a href="javascript:;" class="tab_head" id="goods_ka2" onClick="setGoodsTab('goods_ka',2,3)">详情</a></li>
-          <li><a href="javascript:;" class="tab_head" id="goods_ka3" onClick="setGoodsTab('goods_ka',3,3)">评价</a></li>
+          <!-- <li><a href="javascript:;" class="tab_head" id="goods_ka3" onClick="setGoodsTab('goods_ka',3,3)">评价</a></li> -->
         </ul>
       </div>
       <div class="h-right">
@@ -95,8 +95,8 @@
         </dl>
         <ul class="price_dottm">
           <li style=" text-align:left" id="discount">折扣：{$goods.discount}折</li>
-          <li>{commentStatistics.c0}个评价</li>
-          <li style=" text-align:right">{goods}人已付款</li>
+          <!-- <li>0个评价</li>
+          <li style=" text-align:right">2人已付款</li> -->
         </ul>
         <!--价格部分 end-->
       </div>
@@ -136,9 +136,9 @@
                 <a href="javascript:void(0);" >{$prom_goods.name}&nbsp;&nbsp;(活动时间：{:goodsDate($prom_goods.start_time,1)} - {:goodsDate($prom_goods.end_time,1)})</a>
               </li>
             </ul>
-            <ul class="youhui_list1" style="margin-top:0px;">
+            <!-- <ul class="youhui_list1" style="margin-top:0px;">
               <li><img src="/static/mobile/images/hui.png">{name]}&nbsp;&nbsp;(活动时间：{xxxx} - {xxxx})</li>
-            </ul>
+            </ul> -->
           <div class="blank10"></div>
         </div>
       </section>

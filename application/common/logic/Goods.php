@@ -238,6 +238,8 @@ class Goods extends Model{
         $list_spec = array();
         $old_spec = isset($filter_param['spec'])?$filter_param['spec']:'';
         foreach ($spec_key as $k => $v) {  //$v是规格项详细id即goods_spec_item表的id
+
+            if(!in_array($v,array_keys($spec_item))) continue;  //过滤掉不参与检索的规格
             if(strpos($old_spec, $spec_item[$v]['goods_spec_id'] . '_') === 0 || strpos($old_spec, '@' . $spec_item[$v]['goods_spec_id'] . '_')) continue;
 
             $list_spec[$spec_item[$v]['goods_spec_id']]['goods_spec_id'] = $spec_item[$v]['goods_spec_id'];

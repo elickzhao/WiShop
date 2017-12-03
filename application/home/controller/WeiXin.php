@@ -68,7 +68,7 @@ class WeiXin extends Base{
                                 <FuncFlag>0</FuncFlag>
                                 </xml>";
 
-            $contentStr = '欢迎来到太平洋后台管理系统!';
+            $contentStr = '欢迎来关注!';
             $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
             exit($resultStr);
         }
@@ -125,7 +125,7 @@ class WeiXin extends Base{
                                 <FuncFlag>0</FuncFlag>
                                 </xml>";
 
-        $contentStr = '太平洋后台管理系统无法识别!';
+        $contentStr = '系统无法识别!';
         $resultStr = sprintf($textTpl, $fromUsername, $toUsername, $time, 'text', $contentStr);
         exit($resultStr);
     }

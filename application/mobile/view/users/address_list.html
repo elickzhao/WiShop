@@ -34,14 +34,14 @@
                 {eq name="list.is_default" value="1"}<h2><img src="/static/mobile/images/right.png"></h2>{/eq}
                 <dl>
                     <dt><span>{$list.consignee}</span><em>电话:{$list.mobile}</em></dt>
-                    <dd>{$region_list[$list.province_id]['name']},{$region_list[$list.city_id]['name']},{$region_list[$list.area_id]['name']},{$list.address}</dd>
+                    <dd>{$region_list[$list.province_id]},{$region_list[$list.city_id]},{$region_list[$list.area_id]},{$list.address}</dd>
                 </dl>
             </a>
         {else /}
             {eq name="list.is_default" value="1"}<h2><img src="/static/mobile/images/right.png"></h2>{/eq}
             <dl>
                 <dt><span>{$list.consignee}</span><em>电话:{$list.mobile}</em></dt>
-                <dd>{$region_list[$list.province_id]['name']},{$region_list[$list.city_id]['name']},{$region_list[$list.area_id]['name']},{$list.address}</dd>
+                <dd>{$region_list[$list.province_id]},{$region_list[$list.city_id]},{$region_list[$list.area_id]},{$list.address}</dd>
             </dl>
         {/if}
         <a href="{:url('/mobile/Users/editAddress',array('id'=>$list.id,'source'=>$source))}"><img id="amend" src="/static/mobile/images/amend.png"/></a>

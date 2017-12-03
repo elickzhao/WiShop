@@ -119,7 +119,7 @@ class Plugin extends Base{
         $plugin_list['login'] = $this->dirScan(Config::get('login_plugin_path'));
         $plugin_list['payment'] = $this->dirScan(Config::get('payment_plugin_path'));
         $plugin_list['shipping'] = $this->dirScan(Config::get('shipping_plugin_path'));
-        $plugin_list['function'] = $this->dirScan(Config::get('function_plugin_path'));
+        //$plugin_list['function'] = $this->dirScan(Config::get('function_plugin_path')); //虽然定义了但是目录里却没有
         foreach($plugin_list as $k=>$v){
             foreach($v as $kk=>$vv){
                 $conf = ROOT_PATH.DS.'public'.DS.'plugins'.DS.$k.DS.$vv.DS.'config.php';//插件配置目录

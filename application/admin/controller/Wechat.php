@@ -63,10 +63,12 @@ class Wechat extends Base{
             $rs['code'] ==1 ? $this->redirect(url('Wechat/index')):$this->error($rs['msg']);
         }
         $info = Db::name('wx_account')->find([$id]);
+        $host = Db::name('admin_config')->where(['name'=>'web_site_url','status'=>0])->value('value');
+        $host = $host?$host:request()->host();
         return view('wechat/_account',[
             'id'=>$id,
             'info'=>$info,
-            'url'=>'http://'.request()->host().'/home/WeiXin/index',
+            'url'=>'http://'.$host.'/home/WeiXin/index',
         ]);
     }
     /*删除分组*/

@@ -15,7 +15,7 @@
         <div class="tab_nav">
             <div class="header">
                 <div class="h-left">
-                    <a class="sb-back" href="#" onclick="jumpto()" title="返回"></a>
+                    <a class="sb-back" href="{:url('mobile/Users/index')}" title="返回"></a>
                 </div>
                 <div class="h-mid">收货地址列表</div>
                 <div class="h-right">
@@ -86,31 +86,34 @@
         }
 
         //XXX 这个写的很弱 不过能用 赶进度先这么滴 以后改
-        function jumpto() {
-            var ref = _.split(document.referrer, '/');
-            var fg=1;
+        // function jumpto() {
+        //     //手机上存在问题 先这么样吧 
+        //     //var u = ' http://ez168.free.ngrok.cc/mobile/Users';
+        //     self.location=' http://ez168.free.ngrok.cc/mobile/Users'; 
+        // //     var ref = _.split(document.referrer, '/');
+        // //     var fg=1;
 
-           var b  = _.find(ref, function (o) {
-                //console.log(o);
-                //fg = (o == "editAddress" || o == 'addAddress.tpl' || o == 'setDefault') ? 1 : 0;
-                if (o == "editAddress" || o == 'addAddress.tpl' || o == 'setDefault') {
-                    fg = 1;
-                    return 1;
-                } else {
-                    fg = 0;
-                    return 0;
-                }
-            });
-            //console.log(b);
-            //console.log(location.hostname);
-            if(fg){
-                self.location='http://'+location.hostname+'/mobile/Users'; 
-            }else{
-                window.history.back(-1); 
-            }
-            // console.log(fg);
-            // console.log(document.referrer);
-        }
+        // //    var b  = _.find(ref, function (o) {
+        // //         //console.log(o);
+        // //         //fg = (o == "editAddress" || o == 'addAddress.tpl' || o == 'setDefault') ? 1 : 0;
+        // //         if (o == "editAddress" || o == 'addAddress.tpl' || o == 'setDefault') {
+        // //             fg = 1;
+        // //             return 1;
+        // //         } else {
+        // //             fg = 0;
+        // //             return 0;
+        // //         }
+        // //     });
+        // //     //console.log(b);
+        // //     //console.log(location.hostname);
+        // //     if(fg){
+        // //         self.location='http://'+location.hostname+'/mobile/Users'; 
+        // //     }else{
+        // //         window.history.back(-1); 
+        // //     }
+        // //     // console.log(fg);
+        // //     // console.log(document.referrer);
+        // }
 
     </script>
     <a href="javascript:goTop();" class="gotop">

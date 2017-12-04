@@ -121,12 +121,12 @@ class Users extends Base{
         }
         //获取地区
         $list = getRegionList();
-        $p = regionHandle($list,1,0);
-        $c = regionHandle($list,2,$address['province_id']);
-        $a = regionHandle($list,3,$address['city_id']);
+        $p = getRegionList(1);
+        $c = getRegionList(2,$address['province_id']);
+        $a = getRegionList(3,$address['city_id']);
         $t = [];
         if ($address['twon_id'] > 0) {
-            $t = regionHandle($list,4,$address['area_id']);
+            $t = getRegionList(4,$address['area_id']);
         }
         return view("users/edit_address",[
             'source'=>$source,

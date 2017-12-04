@@ -1,5 +1,6 @@
 <!DOCTYPE html >
 <html>
+
 <head>
     <meta name="Generator" content="TPshop1.2" />
     <meta charset="urlTF-8">
@@ -8,57 +9,113 @@
     {include file="public/head" /}
     <link rel="stylesheet" href="/static/mobile/css/user.css">
 </head>
+
 <body>
-<header>
-    <div class="tab_nav">
-        <div class="header">
-            <div class="h-left"><a class="sb-back" href="javascript:history.back(-1)" title="返回"></a></div>
-            <div class="h-mid">收货地址列表</div>
-            <div class="h-right">
-                <aside class="top_bar">
-                    <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more"><a href="javascript:;"></a> </div>
-                </aside>
+    <header>
+        <div class="tab_nav">
+            <div class="header">
+                <div class="h-left">
+                    <a class="sb-back" href="#" onclick="jumpto()" title="返回"></a>
+                </div>
+                <div class="h-mid">收货地址列表</div>
+                <div class="h-right">
+                    <aside class="top_bar">
+                        <div onClick="show_menu();$('#close_btn').addClass('hid');" id="show_more">
+                            <a href="javascript:;"></a>
+                        </div>
+                    </aside>
+                </div>
             </div>
         </div>
-    </div>
-</header>
-{include file="public/right_menu" /}
-<div id="tbh5v0">
-    {empty name="user_address" value=""}
+    </header>
+    {include file="public/right_menu" /}
+    <div id="tbh5v0">
+        {empty name="user_address" value=""}
         <h3>您还没添加收获地址</h3>
-    {else/}
-    {foreach $user_address as $list}
-    <div class="address_add  "  {eq name="list.is_default" value="1"}style="background: #00B83F"{/eq}>
-        {if condition="$source eq 'cart2' "}
+        {else/} {foreach $user_address as $list}
+        <div class="address_add  " {eq name="list.is_default" value="1" }style="background: #1ab394" {/eq}>
+            {if condition="$source eq 'cart2' "}
             <a href="{:url('/mobile/Cart/aplayInfo',['address_id'=>$list.id])}">
-                {eq name="list.is_default" value="1"}<h2><img src="/static/mobile/images/right.png"></h2>{/eq}
+                {eq name="list.is_default" value="1"}
+                <h2>
+                    <img src="/static/mobile/images/right.png">
+                </h2>{/eq}
                 <dl>
-                    <dt><span>{$list.consignee}</span><em>电话:{$list.mobile}</em></dt>
+                    <dt>
+                        <span>{$list.consignee}</span>
+                        <em>电话:{$list.mobile}</em>
+                    </dt>
                     <dd>{$region_list[$list.province_id]},{$region_list[$list.city_id]},{$region_list[$list.area_id]},{$list.address}</dd>
                 </dl>
             </a>
-        {else /}
-            {eq name="list.is_default" value="1"}<h2><img src="/static/mobile/images/right.png"></h2>{/eq}
+            {else /} {eq name="list.is_default" value="1"}
+            <h2>
+                <img src="/static/mobile/images/right.png">
+            </h2>{/eq}
             <dl>
-                <dt><span>{$list.consignee}</span><em>电话:{$list.mobile}</em></dt>
+                <dt>
+                    <span>{$list.consignee}</span>
+                    <em>电话:{$list.mobile}</em>
+                </dt>
                 <dd>{$region_list[$list.province_id]},{$region_list[$list.city_id]},{$region_list[$list.area_id]},{$list.address}</dd>
             </dl>
-        {/if}
-        <a href="{:url('/mobile/Users/editAddress',array('id'=>$list.id,'source'=>$source))}"><img id="amend" src="/static/mobile/images/amend.png"/></a>
-    </div>
-    {/foreach}
-    {/empty}
+            {/if}
+            <a href="{:url('/mobile/Users/editAddress',array('id'=>$list.id,'source'=>$source))}">
+                <img id="amend" src="/static/mobile/images/amend.png" />
+            </a>
+        </div>
+        {/foreach} {/empty}
 
-</div>
-<div style=" width:100%; height:50px;"></div>
-<div class="list_footer">
-    <a href="{:url('/mobile/Users/addAddress',array('source'=>$source))}" style="background:#00B83F">添加新地址</a>
-</div>
-<script>
-    function goTop(){
-        $('html,body').animate({'scrollTop':0},600);
-    }
-</script>
-<a href="javascript:goTop();" class="gotop"><img src="/static/mobile/images/topup.png"></a>
+    </div>
+    <div style=" width:100%; height:50px;"></div>
+    <div class="list_footer">
+        <a href="{:url('/mobile/Users/addAddress',array('source'=>$source))}" style="background:#00B83F">添加新地址</a>
+    </div>
+    <script src="https://cdn.bootcss.com/lodash.js/4.17.4/lodash.min.js"></script>
+    <script>
+
+        function goTop() {
+            $('html,body').animate({ 'scrollTop': 0 }, 600);
+        }
+
+
+
+
+        function isBigEnough(element) {
+            return element = 15;
+        }
+
+        //XXX 这个写的很弱 不过能用 赶进度先这么滴 以后改
+        function jumpto() {
+            var ref = _.split(document.referrer, '/');
+            var fg=1;
+
+           var b  = _.find(ref, function (o) {
+                //console.log(o);
+                //fg = (o == "editAddress" || o == 'addAddress.tpl' || o == 'setDefault') ? 1 : 0;
+                if (o == "editAddress" || o == 'addAddress.tpl' || o == 'setDefault') {
+                    fg = 1;
+                    return 1;
+                } else {
+                    fg = 0;
+                    return 0;
+                }
+            });
+            //console.log(b);
+            //console.log(location.hostname);
+            if(fg){
+                self.location='http://'+location.hostname+'/mobile/Users'; 
+            }else{
+                window.history.back(-1); 
+            }
+            // console.log(fg);
+            // console.log(document.referrer);
+        }
+
+    </script>
+    <a href="javascript:goTop();" class="gotop">
+        <img src="/static/mobile/images/topup.png">
+    </a>
 </body>
+
 </html>

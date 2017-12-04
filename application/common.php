@@ -669,17 +669,12 @@ function getUserAddress($user_id){
 /**
  * 获取省市县地区列表
  */
-function getRegionList(){
-    // $key = md5('region');
-    // $arr =  Cache::get($key);
-    // if(empty($arr)){
-    //     $list =Db::name('region')->column('*');
-    //     Cache::set($key,$list,3600);
-    // }else{
-    //     return $arr;
-    // }
-    // return $list;
-    return cache('region_list')?cache('region_list'):Db::name('region')->cache('region_list',3600)->column('name','id');
+function getRegionList($level=0,$parent_id=0){
+    if($level){
+        return Db::name('region')->cache(true,3600)->where(['level'=>$level,'parent_id'=>$parent_id])->failException()->column('name','id');
+    }else{
+        return cache('region_list')?cache('region_list'):Db::name('region')->cache('region_list',3600)->column('name','id');
+    }
 
 
 

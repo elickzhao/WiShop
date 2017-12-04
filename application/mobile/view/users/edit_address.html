@@ -37,26 +37,26 @@
                 <select class="province_select"  name="province_id" onchange="getCity(this)">
                     <option value="">请选择省份</option>
                    {foreach $province as $k=>$v}
-                        <option  value="{$v.id}" {eq name="address.province_id" value="$v.id"}selected{/eq}>{$v.name}</option>
+                        <option  value="{$k}" {eq name="address.province_id" value="$k"}selected{/eq}>{$v}</option>
                     {/foreach}
                 </select>
                 <select name="city_id" id="city" onChange="getArea(this)">
                     <option  value="">请选择城市</option>
                     {foreach $city as $k=>$v}
-                    <option  value="{$v.id}" {eq name="address.city_id" value="$v.id"}selected{/eq}>{$v.name}</option>
+                    <option  value="{$k}" {eq name="address.city_id" value="$k"}selected{/eq}>{$v}</option>
                     {/foreach}
                 </select>
                 <select name="area_id" id="district" onChange="getTown(this)">
                     <option  value="">请选择区域</option>
                     {foreach $area as $k=>$v}
-                    <option  value="{$v.id}" {eq name="address.area_id" value="$v.id"}selected{/eq}>{$v.name}</option>
+                    <option  value="{$k}" {eq name="address.area_id" value="$k"}selected{/eq}>{$v}</option>
                     {/foreach}
                 </select>
 
                 <select class="di-bl fl seauii" name="twon_id" id="twon" {eq name="address.twon_id" value="0"}style="display:none;"{/eq} >
                 {gt name="address.twon_id" value="0"}
                     {foreach $twon as $k=>$v}
-                    <option  value="{$v.id}" {eq name="address.twon_id" value="$v.id"}selected{/eq}>{$v.name}</option>
+                    <option  value="{$k}" {eq name="address.twon_id" value="$k"}selected{/eq}>{$v}</option>
                     {/foreach}
                 {/gt}
 

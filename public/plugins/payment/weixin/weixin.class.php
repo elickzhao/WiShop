@@ -59,6 +59,9 @@ class weixin extends \think\Model
             $input->SetProduct_id("123456789"); // 商品ID trade_type=NATIVE，此参数必传。此id为二维码中包含的商品ID，商户自行定义。
             $notify = new NativePay();
             $result = $notify->GetPayUrl($input); // 获取生成二维码的地址
+            if($result['return_code'] == 'FAIL'){
+                return $result['return_code'] ;
+            }
             $url2 = $result["code_url"];
             return '<img alt="模式二扫码支付" src="/index.php?m=Home&c=Index&a=qr_code&data='.urlencode($url2).'" style="width:110px;height:110px;"/>';        
     }    

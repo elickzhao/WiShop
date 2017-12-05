@@ -58,6 +58,10 @@ class Payment extends Base
             exit($code_str);
         }else{
             $code_str = $this->payment->get_code($order,$config_value);
+            //XXX 在未配置微信支付时的报错 这里有个提示 但是比较简易 以后通盘考虑小如何做
+            if($code_str == 'FAIL'){
+                return $this->error('支付失败,请选择其他支付方式或联系客服!');
+            }else{}
         }
       return $this->fetch('payment/payment',[
           'code_str'=>$code_str,

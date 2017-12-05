@@ -39,7 +39,7 @@ class Order extends Model{
     {
         $order = $this->get($id);
         $order_address_2 = getRegionList();
-        $order['address2'] = $order_address_2[$order['province_id']]['name'].'、'.$order_address_2[$order['city_id']]['name'].'、'.$order_address_2[$order['twon_id']]['name'].$order['address'];
+        $order['address2'] = $order_address_2[$order['province_id']].'、'.$order_address_2[$order['city_id']].'、'.$order_address_2[$order['twon_id']].$order['address'];
         return $order;
     }
     /**

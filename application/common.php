@@ -785,7 +785,7 @@ function calculatePrice($user_id=0,$order_goods,$shipping_code='',$shipping_pric
 //            return $coupon_result;
 //        $coupon_price = $coupon_result['result'];
 //    }
-    // 处理物流
+    // 处理物流 XXX 这里应该是因为物流插件引起了错误
     if($shipping_price == 0)
     {
         $shipping_price = $cartLogic->cartFreight2($shipping_code,$province,$city,$district,$goods_weight);
@@ -793,15 +793,15 @@ function calculatePrice($user_id=0,$order_goods,$shipping_code='',$shipping_pric
         if($freight_free > 0 && $goods_price >= $freight_free){
             $shipping_price = 0;
         }
-    }
+    }  
     //使用积分
     if($pay_points && ($pay_points > $user['pay_points'])){
         return ['code'=>0,'msg'=>"你的账户可用积分为:".$user['pay_points'],'url'=>'','data'=>''];
-    }
+    }   
     //使用余额
     if($user_money  && ($user_money > $user['user_money'])){
         return ['code'=>0,'msg'=>"你的账户可用余额为:".$user['user_money'],'url'=>'','data'=>''];
-    }
+    }  
     $order_amount = $goods_price + $shipping_price - $coupon_price; // 应付金额 = 商品价格 + 物流费 - 优惠券
     //积分价格
     $pay_points = ($pay_points / Config::get('point_rate')); // 积分支付 100 积分等于 1块钱

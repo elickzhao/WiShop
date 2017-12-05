@@ -23,6 +23,13 @@ class Cart extends Base{
         parent::_initialize();
         $this->user_info = Session::get('user_info');//登录用户
         $this->user_id = Cookie::get('user_id');
+
+        //XXX 记得删除---------------------------------------------
+        $this->user_id = 2;//Cookie::get('user_id');
+
+
+
+
         $this->cartLogic = new CartLogic();
         //如果是已登录的会员--修改购物车中的商品价格为会员折扣
         if($this->user_id){
@@ -180,13 +187,15 @@ class Cart extends Base{
             $this->error('请先填写收货人信息');
         }
         if($this->cartLogic->cartCount($this->user_id,1) <1) $this->error('你的购物车没有选中商品');
-
+        
         $address = Db::name('user_address')->where(['users_id'=>$this->user_id,'id'=>$data['address_id']])->find();//收货地址
         $order_goods =  Db::name('cart')->where(['users_id'=>$this->user_id,'selected'=>1])->select();//购物车中被选中的商品
         $couponCode='';//直接输入优惠券码
-        $shipping_price=0;//物流价格
+        $shipping_price=10;//物流价格
         $invoice_title='';//发票
-        $result = calculatePrice($this->user_id,$order_goods,$data['shipping_code'],$shipping_price,$address['province_id'],$address['city_id'],$address['area_id'],$data['pay_points'],$data['user_money'],$data['coupon_id'],$couponCode);
+        $pay_points = $data['pay_points'] ? $data['pay_points'] : 0;
+        $user_money = $data['user_money'] ? $data['user_money'] : 0;
+        $result = calculatePrice($this->user_id,$order_goods,$data['shipping_code'],$shipping_price,$address['province_id'],$address['city_id'],$address['area_id'],$pay_points,$user_money ,$data['coupon_id'],$couponCode);
         if($result['code'] !==1) return $result;
 
         // 订单满额优惠活动 TODO

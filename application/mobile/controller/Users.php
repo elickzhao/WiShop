@@ -40,7 +40,14 @@ class Users extends Base{
             'verifyHandle', 'reg', 'sendSmsRegCode', 'findPwd', 'checkValidateCode',
             'forgetPwd', 'checkCaptcha', 'checkUsername', 'sendValidateCode', 'express',
         ];
+
+
+        //XXX 记得删除---------------------------------------------
         $this->user_id = 2;
+
+
+
+
         if(!$this->user_id  && !in_array(req('action'),$no_login)){
             header("location:".Url::build('mobile/Users/login'));
             exit;
@@ -68,7 +75,7 @@ class Users extends Base{
     public function login()
     {
         if($this->user_id > 0 ){
-            header("location:".Url::build('mobile/User/index'));
+            header("location:".Url::build('mobile/Users/index'));
             exit;
         }
         return view('users/login');
@@ -81,7 +88,8 @@ class Users extends Base{
             $rs = $this->userAddress->handle($data,$this->user_id,0);
             if($rs['code'] ==1 && ($this->request->param("source") == 'cart2')){//如果是从结算页面来，要回到结算页面去
 //                header('Location:'.url('/mobile/Cart/aplayInfo', array('address_id' => $data['data'])));
-                $this->success($rs['msg'],Url::build('/mobile/Cart/aplayInfo',['address_id'=>$data['data']]));
+                $this->success($rs['msg'],Url::build('/mobile/Cart/aplayInfo',['address_id'=>$rs['data']]));
+
             }
             $rs['code'] ==1 ? $this->success($rs['msg'],Url::build('Users/addressList')):$this->error($rs['msg']);
         }

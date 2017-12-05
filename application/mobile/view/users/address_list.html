@@ -15,7 +15,7 @@
         <div class="tab_nav">
             <div class="header">
                 <div class="h-left">
-                    <a class="sb-back" href="{:url('mobile/Users/index')}" title="返回"></a>
+                    <a class="sb-back"  {if condition="$source eq 'cart2' "} href="javascript:history.back(-1)" {else /} href="{:url('mobile/Users/index')}" {/if} title="返回"></a>
                 </div>
                 <div class="h-mid">收货地址列表</div>
                 <div class="h-right">
@@ -71,49 +71,11 @@
     <div class="list_footer">
         <a href="{:url('/mobile/Users/addAddress',array('source'=>$source))}" style="background:#00B83F">添加新地址</a>
     </div>
-    <script src="https://cdn.bootcss.com/lodash.js/4.17.4/lodash.min.js"></script>
     <script>
 
         function goTop() {
             $('html,body').animate({ 'scrollTop': 0 }, 600);
         }
-
-
-
-
-        function isBigEnough(element) {
-            return element = 15;
-        }
-
-        //XXX 这个写的很弱 不过能用 赶进度先这么滴 以后改
-        // function jumpto() {
-        //     //手机上存在问题 先这么样吧 
-        //     //var u = ' http://ez168.free.ngrok.cc/mobile/Users';
-        //     self.location=' http://ez168.free.ngrok.cc/mobile/Users'; 
-        // //     var ref = _.split(document.referrer, '/');
-        // //     var fg=1;
-
-        // //    var b  = _.find(ref, function (o) {
-        // //         //console.log(o);
-        // //         //fg = (o == "editAddress" || o == 'addAddress.tpl' || o == 'setDefault') ? 1 : 0;
-        // //         if (o == "editAddress" || o == 'addAddress.tpl' || o == 'setDefault') {
-        // //             fg = 1;
-        // //             return 1;
-        // //         } else {
-        // //             fg = 0;
-        // //             return 0;
-        // //         }
-        // //     });
-        // //     //console.log(b);
-        // //     //console.log(location.hostname);
-        // //     if(fg){
-        // //         self.location='http://'+location.hostname+'/mobile/Users'; 
-        // //     }else{
-        // //         window.history.back(-1); 
-        // //     }
-        // //     // console.log(fg);
-        // //     // console.log(document.referrer);
-        // }
 
     </script>
     <a href="javascript:goTop();" class="gotop">

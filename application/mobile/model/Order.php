@@ -28,4 +28,12 @@ class Order extends Model{
         }
         return $order_list;
     }
+
+    /**
+     * 更改叮当状态
+     */
+    public function changeOrderStatus($where,$status){
+        $result = $this->where($where)->update($status);
+        return $result;
+    }
 }

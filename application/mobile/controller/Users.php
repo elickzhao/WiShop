@@ -220,10 +220,15 @@ class Users extends Base{
         ]);
     }
 
+    /**
+     * 取消订单
+     */
     public function cancelOrder()
     {
         $id = $this->request->param("order_id");
-        $result = Db::name('order')->where(['users_id'=>$this->user_id,'id'=>$id])->update(['order_status'=>'3']);
+
+        $order = new Order();
+        $result = $order->changeOrderStatus(['users_id'=>$this->user_id,'id'=>$id],['order_status'=>'3']);
         if($this->request->param("ajax")){
             if($result){
                 return ['code'=>1,'msg'=>'取消订单成功','url'=>Url::build('Users/addressList'),'data'=>''];
@@ -237,6 +242,24 @@ class Users extends Base{
                 $this->error('取消订单失败',Url::build('/mobile/Users/orderList'));   //XXX 应该返回上一页 这里暂时先这样 赶进度
             }
         }
-
     }
+
+    /**
+     * 确认收货
+     */
+    public function orderConfirm(){
+        $id = $this->request->param("order_id");
+
+        $order = new Order();
+        $result = $order->changeOrderStatus(['users_id'=>$this->user_id,'id'=>$id],['order_status'=>'4']);
+        if($result){
+                $this->success('收货完成',Url::build('/mobile/Users/orderList'));
+        }else{
+                $this->error('收货失败',Url::build('/mobile/Users/orderList'));
+        }    
+    }
+
+    
+
+
 }

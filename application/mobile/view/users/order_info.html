@@ -55,7 +55,7 @@
                 <dl style="border-top:1px solid #eeeeee; margin-top:10px; height:70px; padding-bottom:0px;">
                     <dt class="dingdan_4"><img src="/static/mobile/images/wuliuimg.png" width="30" height="70"></dt>
                     <dd><h3>快递单号:{$order_info.invoice_number}</h3>
-                        <p><a href="{:url('mobile/Users/express',array('order_id'=>$order_info.id))}" target="_blank">查看物流状态</a></p>
+                        <p><a href="http://www.kuaidi100.com/" target="_blank">查看物流状态</a></p>
                     </dd>
                 </dl>
             {/gt}
@@ -110,9 +110,11 @@
         <div class="anniu" style="width:100%">
             {eq name="order_info.cancel_btn" value="1"}<a href="{:url('mobile/Users/cancelOrder',array('order_id'=>$order_info.id))}">取消订单</a>{/eq}
             {eq name="order_info.pay_btn" value="1"}<a href="{:url('mobile/Cart/cart4',array('order_id'=>$order_info.id))}" style="background:#00B83F">立即付款</a>{/eq}
-            {eq name="order_info.receive_btn" value="1"}<a href="{:url('mobile/Cart/orderConfirm',array('order_id'=>$order_info.id))}" style="background:#00B83F">收货确认</a>{/eq}
+            {eq name="order_info.receive_btn" value="1"}<a href="{:url('mobile/Users/orderConfirm',array('order_id'=>$order_info.id))}" style="background:#00B83F">收货确认</a>{/eq}
             {eq name="order_info.comment_btn" value="1"}<a href="{:url('mobile/Users/comment',array('order_id'=>$order_info.id))}" style="background:#00B83F">评价</a>{/eq}
-            {eq name="order_info.shipping_btn" value="1"}<a href="{:url('mobile/Users/express',array('order_id'=>$order_info.id))}" style="background:#00B83F">查看物流</a>{/eq}
+            <!-- 赶进度 以后再添加吧 -->
+            <!-- {eq name="order_info.shipping_btn" value="1"}<a href="{:url('mobile/Users/express',array('order_id'=>$order_info.id))}" style="background:#00B83F">查看物流</a>{/eq} -->
+            {eq name="order_info.shipping_btn" value="1"}<a href="http://www.kuaidi100.com/" style="background:#00B83F">查看物流</a>{/eq}
         </div>
     </div>
 </div>

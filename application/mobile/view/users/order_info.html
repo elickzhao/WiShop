@@ -108,7 +108,7 @@
     </section>
     <div class="detail_dowm">
         <div class="anniu" style="width:100%">
-            {eq name="order_info.cancel_btn" value="1"}<span onClick="cancelOrder('{$order_info.id}')" style="background:#ede8f8;margin-right: 1%">取消订单</span>{/eq}
+            {eq name="order_info.cancel_btn" value="1"}<a href="{:url('mobile/Users/cancelOrder',array('order_id'=>$order_info.id))}">取消订单</a>{/eq}
             {eq name="order_info.pay_btn" value="1"}<a href="{:url('mobile/Cart/cart4',array('order_id'=>$order_info.id))}" style="background:#00B83F">立即付款</a>{/eq}
             {eq name="order_info.receive_btn" value="1"}<a href="{:url('mobile/Cart/orderConfirm',array('order_id'=>$order_info.id))}" style="background:#00B83F">收货确认</a>{/eq}
             {eq name="order_info.comment_btn" value="1"}<a href="{:url('mobile/Users/comment',array('order_id'=>$order_info.id))}" style="background:#00B83F">评价</a>{/eq}

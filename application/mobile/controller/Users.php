@@ -219,4 +219,24 @@ class Users extends Base{
             'order_action'=>$order_action,
         ]);
     }
+
+    public function cancelOrder()
+    {
+        $id = $this->request->param("order_id");
+        $result = Db::name('order')->where(['users_id'=>$this->user_id,'id'=>$id])->update(['order_status'=>'3']);
+        if($this->request->param("ajax")){
+            if($result){
+                return ['code'=>1,'msg'=>'取消订单成功','url'=>Url::build('Users/addressList'),'data'=>''];
+            }else{
+                return ['code'=>0,'msg'=>'取消订单失败,有问题请联系客服!','url'=>'','data'=>''];
+            }
+        }else{
+            if($result){
+                $this->success('取消订单成功',Url::build('/mobile/Users/orderList'));
+            }else{
+                $this->error('取消订单失败',Url::build('/mobile/Users/orderList'));   //XXX 应该返回上一页 这里暂时先这样 赶进度
+            }
+        }
+
+    }
 }

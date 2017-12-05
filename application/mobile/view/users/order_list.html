@@ -118,6 +118,26 @@
             }
         });
     }
+    function cancelOrder(id) {
+            $.ajax({
+                type: "POST",
+                url: "{:url('mobile/Users/cancelOrder')}",
+                data: { order_id: id,ajax:1 },
+                success: function (data) {
+                    if(data['code']){
+                        location.reload();
+                        layer.open({ content: data['msg'], time: 1 });
+                        
+                    }else{
+                        layer.open({ content: data['msg'], time: 1 });
+                    }
+                },
+                error: function () {
+                    layer.open({ content: '网络错误,请稍后再试', time: 1 });
+                    return false;
+                }
+            });
+        }
 </script>
 </body>
 </html>

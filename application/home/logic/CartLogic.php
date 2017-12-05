@@ -252,9 +252,8 @@ class CartLogic extends Model{
      * @return int  //TODO
      */
     function cartFreight2($shipping_code,$province,$city,$district,$weight){
-        if($weight == 0) return 0; // 商品没有重量
-        if($shipping_code == '') return 0;//没有选物流
-
+        if($weight == 0) return -1; // 商品没有重量
+        if($shipping_code == '') return -1;//没有选物流
         // 如果选了物流
 
         // 先根据 镇 县 区找 shipping_area_id
@@ -273,7 +272,7 @@ class CartLogic extends Model{
         if(!$shipping_area_id){
             $shipping_area_id =  Db::name('shipping_area')->where(['shipping_code'=>$shipping_code,'is_default'=>1])->value('id');
         }
-        if(!$shipping_area_id) return 0;
+        if(!$shipping_area_id) return -1;
 
         /// 找到了 shipping_area_id  找config
         $shipping_config = Db::name('shipping_area')->where(['shipping_code'=> $shipping_code])->value('config');
@@ -294,6 +293,9 @@ class CartLogic extends Model{
         return $freight;
 
     }
+
+
+    
     /*公共获取shipping_area_id*/
     private function getSid($shipping_area_id,$district){
         $shipping_area_id = Db::name('area_region')->where(['shipping_area_id'=>['in',$shipping_area_id],'region_id'=>$district])->value('shipping_area_id');

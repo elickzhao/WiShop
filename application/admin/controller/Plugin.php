@@ -268,7 +268,7 @@ class Plugin extends Base{
 
 
         if($info) $info['config'] =unserialize($info['config']);
-        $province = regionHandle(getRegionList(),1,0);//省份
+        $province = getRegionList(1,0); //regionHandle(getRegionList(),1,0);//省份
         $sql = "SELECT ar.region_id,r.name FROM pc_area_region ar LEFT JOIN pc_region r ON r.id = ar.region_id WHERE ar.shipping_area_id = {$id}";
         $select_area = Db::query($sql);
         $this->assign('select_area',$select_area);

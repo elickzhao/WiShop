@@ -82,7 +82,7 @@
                                 <select class="province_select"  name="province_id"  id="province" size="10" onchange="getCity(this)">
                                     <option value="">请选择省份</option>
                                     {foreach $province as $k=>$v}
-                                    <option  value="{$v.id}">{$v.name}</option>
+                                    <option  value="{$k}">{$v}</option>
                                     {/foreach}
                                 </select>
                                 <select name="city_id" id="city" size="10" onChange="getArea(this)">

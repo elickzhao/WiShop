@@ -785,10 +785,11 @@ function calculatePrice($user_id=0,$order_goods,$shipping_code='',$shipping_pric
 //            return $coupon_result;
 //        $coupon_price = $coupon_result['result'];
 //    }
-    // 处理物流 XXX 这里应该是因为物流插件引起了错误
+    // 处理物流 XXX 快递当有地区 却没有实际地址时 不显示快递费 如果没有地区会报错 这是问题
     if($shipping_price == 0)
     {
         $shipping_price = $cartLogic->cartFreight2($shipping_code,$province,$city,$district,$goods_weight);
+        if($shipping_price == -1) return ['code'=>0,'msg'=>"此快递不支持您所在地区,请选择其他快递或联系客服!",'url'=>'','data'=>''];
         $freight_free = Config::get('freight_free'); // 全场满多少免运费
         if($freight_free > 0 && $goods_price >= $freight_free){
             $shipping_price = 0;

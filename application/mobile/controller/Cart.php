@@ -150,7 +150,7 @@ class Cart extends Base{
         $this->beforeCart($address);
 
         $result = $this->cartLogic->cartList($this->user_info, $this->session_id,1,1); // 获取购物车商品
-        $shippingList = Db::name('plugin')->where(['type' => 'shipping','status' => 1])->select();// 物流公司
+        $shippingList = Db::name('plugin')->where(['type' => 'shipping','status' => 1])->select();// 物流公司   XXX 可以把common.cartFreight2 拆分成是否匹配地区然后这里根据地区直接显示存在的快递
 
         //找出这个用户的优惠券 没过期的  并且 订单金额达到 condition 优惠券指定标准的优惠券列表
         $coupon_list = Db::name('coupon')->alias('c')->field('c.name,c.money,c.condition,cl.*')->join('pc_coupon_list cl','c.id=cl.coupon_id AND c.type in (0,1,2,3) AND order_id=0')->where(['cl.users_id'=>$this->user_id,'c.use_end_time'=>['gt',time()],'c.condition'=>['elt',$result['total_price']['total_fee']]])->select();
@@ -173,7 +173,7 @@ class Cart extends Base{
             exit;
         }
        if($this->cartLogic->cartCount($this->user_id,1)==0){
-           $this->error ('您还没选中任何商品',Url::build('mobile/Cart/cart'));
+           $this->error ('您还没选中任何商品',Url::build('/mobile'));
        }
     }
     /* ajax 获取订单商品价格 或者提交 订单*/
@@ -191,7 +191,7 @@ class Cart extends Base{
         $address = Db::name('user_address')->where(['users_id'=>$this->user_id,'id'=>$data['address_id']])->find();//收货地址
         $order_goods =  Db::name('cart')->where(['users_id'=>$this->user_id,'selected'=>1])->select();//购物车中被选中的商品
         $couponCode='';//直接输入优惠券码
-        $shipping_price=10;//物流价格
+        $shipping_price=0;//物流价格
         $invoice_title='';//发票
         $pay_points = $data['pay_points'] ? $data['pay_points'] : 0;
         $user_money = $data['user_money'] ? $data['user_money'] : 0;

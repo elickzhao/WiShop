@@ -48,7 +48,7 @@
             <dl>
                 <dt class="dingdan_3"></dt>
                 <dd><h3>收货人姓名&nbsp;:&nbsp;{$order_info.consignee}<em>{$order_info.mobile}</em></h3>
-                    <div class="adss">详细地址&nbsp;:&nbsp;{$region_list[$order_info.province_id]['name']},{$region_list[$order_info['city_id']]['name']},{$region_list[$order_info['area_id']]['name']},{$order_info.address}</div>
+                    <div class="adss">详细地址&nbsp;:&nbsp;{$region_list[$order_info.province_id]},{$region_list[$order_info['city_id']]},{$region_list[$order_info['area_id']]},{$order_info.address}</div>
                 </dd>
             </dl>
             {gt name="order_info.shipping_time" value="0"}

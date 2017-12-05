@@ -7,19 +7,20 @@
                 <div class="ibox-title">
                     <h5>订单详情</h5>
                     <div class="ibox-tools">
-                        <a href="{:url('Order/deliveryList')}"  title="返回">
+                        <a href="{:url('Order/orderDetail',array('id'=>$order['id']))}"  title="返回">
                             <i class="fa fa-reply"> 返回</i>
                         </a>
                     </div>
                     <div class="ibox-content">
                         <div class="row ">
                             <div class="col-sm-2 pull-right">
-                                <a href="{:url('orderEditor',['id'=>$order.id])}" class="btn btn-primary "><i class="fa fa-edit"></i> 修改订单</a>
+                                <a href="#" class="btn btn-primary "><i class="fa fa-edit"></i> 修改订单</a>
+                                <!-- <a href="{:url('orderEditor',['id'=>$order.id])}" class="btn btn-primary "><i class="fa fa-edit"></i> 修改订单</a> -->
                                 <a href="javascript:void(0)" class="btn btn-info " ><i class="fa fa-print"></i> 打印</a>
                             </div>
                         </div>
                         <div class="hr-line-dashed"></div>
-                        <form action=""  id="btnForm">
+                        <form action=""  id="btnForm" method="post">
                         <div class="table-responsive m-t">
                             <div class="col-sm-12    text-center">
                                 <h3 class="inline "> <i class="fa fa-print"></i> 订单基本信息&nbsp;&nbsp;</h3>
@@ -129,7 +130,7 @@
                                     <div class="form-group avalue">
                                         <label class="col-sm-3 control-label"><strong>操作项：</strong></label>
                                         <div class="input-group col-sm-1 inline">
-                                            <button type="button"  class="btn btn-info btn-sm btn-block saveBtn" href="javascript:void(0)" data-url="{:url('Order/deliveryHandle')}" > 确认发货</button>
+                                            <button type="button"  class="btn btn-info btn-sm btn-block saveBtn" href="javascript:void(0)" data-url="{:url('Order/deliveryHandle',['order_id'=>$order['id']])}" > 确认发货</button>
                                             <a href="http://www.kuaidi100.com/" target="_blank">查看物流</a>
                                         </div>
                                     </div>
@@ -200,7 +201,7 @@
                 return;
             });
         }
-        ajaxFormBtn($(this).attr('data-url'),'btnForm');
+        $("#btnForm").attr('action',$(this).attr('data-url')).submit();
     });
 </script>
 </body>

@@ -126,6 +126,9 @@ class Order extends Base{
         $this->assign('button',$order_btn);
         return $this->fetch('order/order_detail');
     }
+
+    //XXX orderEditor 编辑订单
+
     /*管理员操作订单*/
     public function orderAction()
     {
@@ -206,8 +209,9 @@ class Order extends Base{
         }
         $dt = $this->request->param("");
         if($dt['order_id'] <1) $this->error('参数错误');
+        if(! isset($dt['goods']) ) $this->error('发货物品出错请检查订单!');
         $res = $this->order->deliveryHandle($dt);
-        $res?$this->success('操作成功',Url::build('deliveryInfo',['order_id'=>$dt['id']])):$this->error('操作失败');
+        $res?$this->success('操作成功!',Url::build('orderList')):$this->error('操作失败!',Url::build('deliveryInfo',['order_id'=>$dt['order_id']]));
 
     }
     /*订单价格修改*/

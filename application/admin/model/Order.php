@@ -260,7 +260,7 @@ class Order extends Model{
      *@param
      */
     public function deliveryHandle($data)
-    {
+    {      
         $oid = $data['order_id'];
         $order = $this->getOrderInfo($oid);
         $orderGoods = $this->getOrderGoods($oid);
@@ -283,7 +283,7 @@ class Order extends Model{
         $data1['invoice_number'] = $data['invoice_number'];
         $data1['note'] = $data['note'];
         $data1['order_id'] = $data['order_id'];
-
+        
         $addid = Db::name('ship_order')->insertGetId($data1);
         $is_delivery = 0;
         $r ='';
@@ -306,8 +306,7 @@ class Order extends Model{
             $updata['shipping_status'] = 2;//不完全发货
         }
         $this->where(['id'=>$oid])->update($updata);//改变订单状态
-        $s = $this->orderActionLog($order['order_id'],'delivery',$data['note']);//操作日志
-
+        $s = $this->orderActionLog($data['order_id'],'delivery',$data['note']);//操作日志
         return $s && $r;
     }
 }

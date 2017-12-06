@@ -45,7 +45,7 @@
             <a href="{:url('orderDetail',['id'=>$v.id])}" class="btn btn-primary btn-xs">
                 <i class="fa fa-eye"></i> 详细
             </a>&nbsp;&nbsp;
-            <a href="javascript:;"class="btn btn-danger btn-xs" onclick="delBtn(this)" data-id="{$v.id}" data-name="{$v.order_sn}" data-url="{:url('deOrder')}">
+            <a href="javascript:;"class="btn btn-danger btn-xs" onclick="delBtn(this)" data-id="{$v.id}" data-name="{$v.order_sn}" data-url="{:url('orderAction',['order_id'=>$v.id,'note'=>'remove','type'=>'remove'])}">
                 <i class="fa fa-trash-o"></i> 删除
             </a>
         </td>

@@ -376,7 +376,16 @@ class Goods extends Base{
     /*删除商品*/ //TODO 删除商品
     public function delGoods()
     {
-
+        //因为涉及到很多 比如图片了 参与的活动了 等等问题 
+        //但是现在还是需要 所以先一个简单删除吧以后再说  
+        //以后最好做一个回收站的形式
+        $res = $this->goods->destroy(input('id/d'));
+        if($res){
+            return ['code'=>1,'msg'=>'删除成功!'];
+        }else{
+            return ['code'=>0,'msg'=>'删除失败!'];
+        }
+        
     }
     /* 动态获取商品规格选择框 根据不同的数据返回不同的选择框 */
     public function ajaxSpecValue()

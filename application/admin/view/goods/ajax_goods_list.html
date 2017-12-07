@@ -70,7 +70,7 @@
             <a href="{:url('goodsHandle',['id'=>$v.id])}" class="btn btn-primary btn-xs">
                 <i class="fa fa-pencil-square-o"></i> 编辑
             </a>&nbsp;&nbsp;
-            <a href="javascript:;"class="btn btn-danger btn-xs" onclick="delBtn(this)" data-id="{$v.id}" data-name="{$v.goods_name}" data-url="{:url('delGoods')}">
+            <a href="javascript:;"class="btn btn-danger btn-xs" onclick="delBtn(this)" data-id="{$v.id}" data-name="{$v.goods_name}" data-url="{:url('delGoods',['id'=>$v.id])}">
                 <i class="fa fa-trash-o"></i> 删除
             </a>
         </td>

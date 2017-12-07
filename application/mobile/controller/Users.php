@@ -41,13 +41,6 @@ class Users extends Base{
             'forgetPwd', 'checkCaptcha', 'checkUsername', 'sendValidateCode', 'express',
         ];
 
-
-        //XXX 记得删除---------------------------------------------
-        $this->user_id = 2;
-
-
-
-
         if(!$this->user_id  && !in_array(req('action'),$no_login)){
             header("location:".Url::build('mobile/Users/login'));
             exit;
